@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LurkLib", "LurkLib\LurkLib.vcxproj", "{B3BC7FCA-1CCA-4C27-B1C1-98DC1455A305}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LurkLibTest", "LurkLibTest\LurkLibTest.vcxproj", "{4D5BA900-D5B0-4277-9487-5D6008E50D85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{B3BC7FCA-1CCA-4C27-B1C1-98DC1455A305}.Release|x64.Build.0 = Release|x64
 		{B3BC7FCA-1CCA-4C27-B1C1-98DC1455A305}.Release|x86.ActiveCfg = Release|Win32
 		{B3BC7FCA-1CCA-4C27-B1C1-98DC1455A305}.Release|x86.Build.0 = Release|Win32
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Debug|x64.ActiveCfg = Debug|x64
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Debug|x64.Build.0 = Debug|x64
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Debug|x86.ActiveCfg = Debug|Win32
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Debug|x86.Build.0 = Debug|Win32
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Release|x64.ActiveCfg = Release|x64
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Release|x64.Build.0 = Release|x64
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Release|x86.ActiveCfg = Release|Win32
+		{4D5BA900-D5B0-4277-9487-5D6008E50D85}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

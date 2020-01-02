@@ -13,16 +13,25 @@ namespace Lurk {
 		class Event
 		{
 		public:
+			Event<EventType, ArgType>();
+
 			void Call(EventArgs<EventType, ArgType>);
 
-			Event<EventType, ArgType>& operator+=(const EventFunc&);
-			void Subscribe(const EventFunc&);
+			Event<EventType, ArgType>& operator+=(const EventFunc<EventType, ArgType>);
+			void Subscribe(const EventFunc<EventType, ArgType>);
 
 			void UnSubscribe();
+
+			EventFunc<EventType, ArgType> GetFunc();
 		private:
-			EventFunc& subscribedFunc;
-			void AddSubscriber(EventFunc& func);
+			EventFunc<EventType, ArgType> subscribedFunc;
+			void AddSubscriber(const EventFunc<EventType, ArgType> func);
 		};
+
+		template<typename EventType, typename ArgType>
+		Event<EventType, ArgType>::Event()
+		{
+		}
 
 		template<typename EventType, typename ArgType>
 		inline void Event<EventType, ArgType>::Call(EventArgs<EventType, ArgType> args)
@@ -31,13 +40,13 @@ namespace Lurk {
 		}
 
 		template<typename EventType, typename ArgType>
-		inline Event<EventType, ArgType>& Event<EventType, ArgType>::operator+=(const EventFunc<EventType, ArgType>& func)
+		inline Event<EventType, ArgType>& Event<EventType, ArgType>::operator+=(const EventFunc<EventType, ArgType> func)
 		{
 			AddSubscriber(func);
 		}
 
 		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::Subscribe(const EventFunc<EventType, ArgType>& func)
+		inline void Event<EventType, ArgType>::Subscribe(const EventFunc<EventType, ArgType> func)
 		{
 			AddSubscriber(func);
 		}
@@ -49,7 +58,13 @@ namespace Lurk {
 		}
 
 		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::AddSubscriber(EventFunc<EventType, ArgType>& func)
+		inline EventFunc<EventType, ArgType> Event<EventType, ArgType>::GetFunc()
+		{
+			return subscribedFunc;
+		}
+
+		template<typename EventType, typename ArgType>
+		inline void Event<EventType, ArgType>::AddSubscriber(const EventFunc<EventType, ArgType> func)
 		{
 			subscribedFunc = func;
 		}

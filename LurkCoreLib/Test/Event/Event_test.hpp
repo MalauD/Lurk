@@ -1,13 +1,13 @@
 #pragma once
 #include "gtest/gtest.h"
-#include "./../../../LurkLib/Event/Event.hpp"
-#include "./../../../LurkLib/Event/ServerEvents/ServerEventTypes.hpp"
-#include "./../../../LurkLib/Event/ServerEvents/ServerEventArgs.hpp"
+#include "./../../Src/Event/Event.hpp"
+#include "./../../Src/Event/ServerEvents/ServerEventTypes.hpp"
+#include "./../../Src/Event/ServerEvents/ServerEventArgs.hpp"
 
 using namespace Lurk::Event;
 
 
-TEST(Subscribe_test) {
+TEST(EventTest,Subscribe_test) {
 	Event<ServerEventTypes, int> myEvent;
 
 	ASSERT_FALSE((bool)myEvent.GetFunc());

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MockSocket">
+    <Position X="0.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAA=</HashCode>
+      <FileName>Test\Network\SocketMock.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Network::Socket">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAgAAAAAAAAEAgAEAABYAAgIAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Src\Network\Socket.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Network::TcpClient">
+    <Position X="3.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ASAAAAAAIAAAAAAAAAEAAAAgAAAAAIAAAAAAQAAACAA=</HashCode>
+      <FileName>Src\Network\TcpClient.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Network::TcpServer">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAEQAEAACAAAAAACAAAAQAAAAAA=</HashCode>
+      <FileName>Src\Network\TcpServer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Network::TcpSocket">
+    <Position X="3.25" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAAAAAAEAAAEgACIAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Network\TcpSocket.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -4,7 +4,8 @@ using namespace Lurk::Network;
 
 int TcpClient::inet_pton(int af, const char *src, void *dst)
 {
-  struct sockaddr_storage ss;
+  return ::inet_pton(af, (PCSTR)src, dst);
+  /*struct sockaddr_storage ss;
   int size = sizeof(ss);
   char src_copy[INET6_ADDRSTRLEN+1];
 
@@ -16,18 +17,18 @@ int TcpClient::inet_pton(int af, const char *src, void *dst)
   if (WSAStringToAddress((LPWSTR)src_copy, af, NULL, (struct sockaddr *)&ss, &size) == 0) {
     switch(af) {
       case AF_INET:
-    *(struct in_addr *)dst = ((struct sockaddr_in *)&ss)->sin_addr;
-    return 1;
+        *(struct in_addr *)dst = ((struct sockaddr_in *)&ss)->sin_addr;
+        return 1;
       case AF_INET6:
-    *(struct in6_addr *)dst = ((struct sockaddr_in6 *)&ss)->sin6_addr;
-    return 1;
+        *(struct in6_addr *)dst = ((struct sockaddr_in6 *)&ss)->sin6_addr;
+        return 1;
     }
   }
-  return 0;
+  return 0;*/
 }
 
-TcpClient::TcpClient() : TcpSocket(){
-    
+TcpClient::TcpClient(std::unique_ptr<Socket> socket) : _socket(std::move(socket)){
+ 
 }
 
 TcpExceptions TcpClient::ConnectToServer(char* ip, int16_t port) {
@@ -39,7 +40,7 @@ TcpExceptions TcpClient::ConnectToServer(char* ip, int16_t port) {
         return TcpExceptions::InvalidAddress;
     } 
 
-    if(Connect((struct sockaddr *)&myServerAddr, sizeof(myServerAddr)) < 0){
+    if(_socket->Connect((struct sockaddr *)&myServerAddr, sizeof(myServerAddr)) < 0){
         return TcpExceptions::ConnectionError;
     }
 
@@ -47,11 +48,11 @@ TcpExceptions TcpClient::ConnectToServer(char* ip, int16_t port) {
 }
 
 int TcpClient::SendBytes(const uint8_t* buffer, int len) {
-    return Send(buffer, len, 0);
+    return _socket->Send(buffer, len, 0);
 }
 
 int TcpClient::RecvBytes(const uint8_t* buffer, int len) {
-    return Recv(buffer, len, 0);
+    return _socket->Recv(buffer, len, 0);
 }
 
 void TcpClient::RecvBytesAsync(std::function<void(uint8_t*,int)> callback){
@@ -72,6 +73,6 @@ void TcpClient::RecvBytesLoopAsync(std::function<void(uint8_t*,int)> callback){
             callback(buffer,i);
             memset(buffer,0,sizeof(buffer));
         }
-        IsSocketAlive = false;
+        //_socket->IsSocketAlive = false;
     }).detach();
 }

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Test">
+      <UniqueIdentifier>{4588911b-af8f-4c60-9bff-c4728c8fdde1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Event">
+      <UniqueIdentifier>{6587b92f-32e7-42a0-b22f-7c994d02fbdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Network">
+      <UniqueIdentifier>{a640ff8a-849f-4ca5-bd62-6edd21900298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{ab6b20de-4e21-4574-acf2-ae827266f986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Event">
+      <UniqueIdentifier>{08feb294-66d5-445b-b341-d55b12713839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Event\ServerEvents">
+      <UniqueIdentifier>{fa044e56-9f0e-4115-af59-6ec3536a22bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Network">
+      <UniqueIdentifier>{36468c04-95f8-46fe-b87e-942d85160c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Network\Exceptions">
+      <UniqueIdentifier>{78552e6f-962c-4df2-ad20-e74078c26d75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Node">
+      <UniqueIdentifier>{8d911ce6-c322-4556-838d-67572215f90a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Event\Event.hpp">
+      <Filter>Src\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventArgs.hpp">
+      <Filter>Src\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\ServerEvents\ServerEventArgs.hpp">
+      <Filter>Src\Event\ServerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\ServerEvents\ServerEventTypes.hpp">
+      <Filter>Src\Event\ServerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Exceptions\TcpExceptions.hpp">
+      <Filter>Src\Network\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Event\Event_test.hpp">
+      <Filter>Test\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Network\SocketMock.hpp">
+      <Filter>Test\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Network\TcpClient_test.hpp">
+      <Filter>Test\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Network\Socket.hpp">
+      <Filter>Src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Network\TcpClient.hpp">
+      <Filter>Src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Network\TcpServer.hpp">
+      <Filter>Src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Network\TcpSocket.hpp">
+      <Filter>Src\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Node\ServerHandler.hpp">
+      <Filter>Src\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\main_test.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Network\TcpServer_test.hpp">
+      <Filter>Test\Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Network\TcpClient.cpp">
+      <Filter>Src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Network\TcpServer.cpp">
+      <Filter>Src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Network\TcpSocket.cpp">
+      <Filter>Src\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Node\ServerHandler.cpp">
+      <Filter>Src\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>

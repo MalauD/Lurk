@@ -24,7 +24,6 @@ int TcpSocket::Listen(int backlog) {
 
 Socket* TcpSocket::Accept(struct sockaddr *addr, socklen_t addrlen) {
     return new TcpSocket(accept(_socket, addr, &addrlen));
-    
 }
 
 int TcpSocket::Connect(const struct sockaddr *addr, socklen_t addrlen) {

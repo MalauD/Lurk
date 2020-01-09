@@ -13,6 +13,7 @@ namespace Lurk {
 		class Event
 		{
 		public:
+
 			Event<EventType, ArgType>();
 
 			void Call(EventArgs<EventType, ArgType>);

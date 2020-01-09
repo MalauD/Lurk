@@ -7,8 +7,7 @@
 namespace Lurk{
     namespace Network{
         class TcpSocket : public Socket{
-            protected:
-                TcpSocket(SOCKET socket);
+            public:
                 TcpSocket();
                 int Bind(const struct sockaddr *addr, socklen_t addrlen) override;
                 int Listen(int backlog) override;
@@ -17,7 +16,8 @@ namespace Lurk{
                 int Send(const void* buffer, int len, int flags) override;
                 int Recv(const void* buffer, int len, int flags) override;
                 bool IsValid();
-                
+            protected:
+                TcpSocket(SOCKET socket);
         };
     }
 }

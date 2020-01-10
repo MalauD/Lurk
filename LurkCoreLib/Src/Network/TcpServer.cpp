@@ -48,10 +48,6 @@ void TcpServer::AcceptClientsAsync(std::function<void(std::unique_ptr<Socket>, T
     if(!((NewSocket = _socket->Accept((struct sockaddr *)&Address, AddrLen))->operator==(INVALID_SOCKET))){
         std::thread([&callback,&NewSocket](){
             callback(std::unique_ptr<Socket>(NewSocket), TcpExceptions::NoException);
-            while(NewSocket->IsAlive()){
-                std::this_thread::sleep_for(std::chrono::milliseconds(2)); //TODO Ugly
-            }
-                
         }).detach();
     }
 }

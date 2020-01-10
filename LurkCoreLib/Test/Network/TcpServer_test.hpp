@@ -109,7 +109,7 @@ TEST(TcpServerTest, AcceptClientsAsyncTest) {
 		.WillOnce(Return(new MockSocket(INVALID_SOCKET)));
 
 	server.AcceptClientsAsync([](std::unique_ptr<Socket> mySocket, TcpExceptions excep) {
-		ASSERT_FALSE(mySocket);
-		ASSERT_EQ(excep, TcpExceptions::AcceptError);
+			ASSERT_FALSE(mySocket);
+			ASSERT_EQ(excep, TcpExceptions::AcceptError);
 		});
 }

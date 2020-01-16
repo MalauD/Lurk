@@ -1,30 +1,40 @@
 #pragma once
 #include "gtest/gtest.h"
 #include "./../../Src/Event/Event.hpp"
-#include "./../../Src/Event/ServerEvents/ServerEventTypes.hpp"
-#include "./../../Src/Event/ServerEvents/ServerEventArgs.hpp"
+#include "./../../Src/Event/EventArgs.hpp"
 
-using namespace Lurk::Event;
+using namespace Lurk;
 
+class TestEventArgs : Lurk::Event::EventArgs{
+	public:
+		TestEventArgs(int A) : a(A) {}
+		int a;
+};
 
 TEST(EventTest,Subscribe_test) {
-	Event<ServerEventTypes, int> myEvent;
+	Event::Event<TestEventArgs> myEvent;
 
 	ASSERT_FALSE((bool)myEvent.GetFunc());
 
-	myEvent.Subscribe([&](EventArgs<ServerEventTypes, int> args) {
+	myEvent.Subscribe([&](TestEventArgs args) {
 			ASSERT_TRUE(false);
 		});
 
 	ASSERT_TRUE((bool)myEvent.GetFunc());
 
-			
+	myEvent.UnSubscribe();
+
+	myEvent += [&](TestEventArgs args) {
+		ASSERT_TRUE(false);
+	};
+
+	ASSERT_TRUE((bool)myEvent.GetFunc());
 }
 
 TEST(EventTest,UnSubscribe_test) {
-	Event<ServerEventTypes, int> myEvent;
+	Event::Event<TestEventArgs> myEvent;
 
-	myEvent.Subscribe([&](EventArgs<ServerEventTypes, int> args) {
+	myEvent.Subscribe([&](TestEventArgs args) {
 			ASSERT_TRUE(false);
 		});
 
@@ -38,14 +48,13 @@ TEST(EventTest,GetFunc_test) {
 }
 
 TEST(EventTest,CallTest) {
-	Event<ServerEventTypes, int> myEvent;
+	Event::Event<TestEventArgs> myEvent;
 
-	myEvent.Subscribe([&](EventArgs<ServerEventTypes, int> args) {
-			ASSERT_EQ(args.GetArg(), 20);
-			ASSERT_EQ((int)args.GetType(), 0);
+	myEvent.Subscribe([&](TestEventArgs args) {
+			ASSERT_EQ(args.a, 20);
 		});
 
-	auto args = ServerEventArgs<int>(ServerEventTypes::OnNewClient,20);
+	auto args = TestEventArgs(20);
 
 	myEvent.Call(args);
 }

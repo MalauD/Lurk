@@ -25,8 +25,11 @@
     <Filter Include="Src\Node">
       <UniqueIdentifier>{8d911ce6-c322-4556-838d-67572215f90a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Event\ServerEvents">
-      <UniqueIdentifier>{ead74b00-acce-413a-b640-d3770a3af937}</UniqueIdentifier>
+    <Filter Include="Src\Node\EventsArgs">
+      <UniqueIdentifier>{d83a238d-2a89-4fda-bf94-a3c3537eff66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Node">
+      <UniqueIdentifier>{dcac495d-d683-4b56-9ab7-783e8011390a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,11 +72,11 @@
     <ClInclude Include="Src\Event\EventArgs.hpp">
       <Filter>Src\Event</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Event\ServerEvents\ServerEventArgs.hpp">
-      <Filter>Src\Event\ServerEvents</Filter>
+    <ClInclude Include="Src\Node\EventsArgs\OnNewClientEventArgs.hpp">
+      <Filter>Src\Node\EventsArgs</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Event\ServerEvents\ServerEventTypes.hpp">
-      <Filter>Src\Event\ServerEvents</Filter>
+    <ClInclude Include="Test\Node\ServerHandler_test.hpp">
+      <Filter>Test\Node</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +95,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
+    <ClCompile Include="Src\Node\EventsArgs\OnNewClientEventArgs.cpp">
+      <Filter>Src\Node\EventsArgs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

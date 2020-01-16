@@ -39,5 +39,5 @@ int TcpSocket::Recv(const void* buffer, int len, int flags){
 }
 
 bool TcpSocket::IsValid(){
-    return !operator==(INVALID_SOCKET);
+    return !operator==((int)INVALID_SOCKET);
 }

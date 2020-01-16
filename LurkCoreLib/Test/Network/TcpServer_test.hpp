@@ -1,8 +1,8 @@
 #pragma once
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "Src/Network/TcpServer.hpp"
-#include "Test/Network/SocketMock.hpp"
+#include "./../../Src/Network/TcpServer.hpp"
+#include "./SocketMock.hpp"
 
 using namespace Lurk::Network;
 using ::testing::_;
@@ -74,11 +74,9 @@ TEST(TcpServerTest, AcceptClientsTest) {
 	MockSocket* mock = new MockSocket();
 	auto server = TcpServer(std::unique_ptr<MockSocket>(mock), 2003);
 
-	MockSocket* producedMock = new MockSocket();
-
 	EXPECT_CALL(*mock, Accept(_, _))
 		.Times(1)
-		.WillOnce(Return(new MockSocket(INVALID_SOCKET)));
+		.WillOnce(Return(new MockSocket((int)INVALID_SOCKET)));
 
 	server.AcceptClients([](std::unique_ptr<Socket> mySocket, TcpExceptions excep) {
 			ASSERT_FALSE(mySocket);
@@ -106,7 +104,7 @@ TEST(TcpServerTest, AcceptClientsAsyncTest) {
 
 	EXPECT_CALL(*mock, Accept(_, _))
 		.Times(1)
-		.WillOnce(Return(new MockSocket(INVALID_SOCKET)));
+		.WillOnce(Return(new MockSocket((int)INVALID_SOCKET)));
 
 	server.AcceptClientsAsync([](std::unique_ptr<Socket> mySocket, TcpExceptions excep) {
 			ASSERT_FALSE(mySocket);

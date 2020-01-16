@@ -34,7 +34,7 @@ TcpExceptions TcpServer::SetupServer() {
 void TcpServer::AcceptClients(std::function<void(std::unique_ptr<Socket>, TcpExceptions)> callback){ 
     Socket *NewSocket;
     socklen_t AddrLen = sizeof(Address);
-    if(!((NewSocket = _socket->Accept((struct sockaddr *)&Address, AddrLen))->operator==(INVALID_SOCKET))){
+    if(!((NewSocket = _socket->Accept((struct sockaddr *)&Address, AddrLen))->operator==((int)INVALID_SOCKET))){
         callback(std::unique_ptr<Socket>(NewSocket), TcpExceptions::NoException);
     }
     else {
@@ -42,10 +42,10 @@ void TcpServer::AcceptClients(std::function<void(std::unique_ptr<Socket>, TcpExc
     }
 }
 
-void TcpServer::AcceptClientsAsync(std::function<void(std::unique_ptr<Socket>, TcpExceptions)> callback){
+[[deprecated("use AcceptClients()")]]void TcpServer::AcceptClientsAsync(std::function<void(std::unique_ptr<Socket>, TcpExceptions)> callback){
     Socket *NewSocket;
     socklen_t AddrLen = sizeof(Address);
-    if(!((NewSocket = _socket->Accept((struct sockaddr *)&Address, AddrLen))->operator==(INVALID_SOCKET))){
+    if(!((NewSocket = _socket->Accept((struct sockaddr *)&Address, AddrLen))->operator==((int)INVALID_SOCKET))){
         std::thread([&callback,&NewSocket](){
             callback(std::unique_ptr<Socket>(NewSocket), TcpExceptions::NoException);
         }).detach();

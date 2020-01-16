@@ -1,12 +1,22 @@
-// #pragma once
-// #include "./../Network/TcpServer.hpp"
+#pragma once
+#include "./../Network/TcpServer.hpp"
+#include "./../Event/Event.hpp"
+#include "./EventsArgs/OnNewClientEventArgs.hpp"
 
-// class ServerHandler{
-//     public:
-//         ServerHandler(int16_t port);
-//         void Start();
-//         void SubscribeToEvent();
-//     private:
-//         Lurk::Network::TcpServer serv;
-//         void OnNewClient(Lurk::Network::TcpClient*,Lurk::Network::TcpExceptions);
-// };
+namespace Lurk {
+    namespace Node {
+
+        typedef Event::Event<OnNewClientEventArgs> OnNewClientEventType;
+
+        class ServerHandler {
+            public:
+                ServerHandler(int16_t port, std::unique_ptr<Lurk::Network::Socket> socket);
+                Lurk::Network::TcpExceptions Start();
+                OnNewClientEventType OnNewClient;
+            private:
+                Lurk::Network::TcpServer serv;
+        };
+    }
+}
+
+ 

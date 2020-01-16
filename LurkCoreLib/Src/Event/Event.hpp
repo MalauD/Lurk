@@ -1,71 +1,78 @@
 #pragma once
 #include "EventArgs.hpp"
 #include <functional>
+#include <memory>  
 
 namespace Lurk {
 	namespace Event {
 
-		template<typename EventType, typename ArgType>
-		using EventFunc = std::function<void(EventArgs<EventType, ArgType>)>;
+		class EventArgs;
+
+		template<class EventArgsClass>
+		using EventFunc = std::function<void(EventArgsClass)>;
 
 
-		template<typename EventType, typename ArgType>
+		template<class EventArgsType>
 		class Event
 		{
+			static_assert(std::is_base_of<EventArgs, EventArgsType>::value, "EventArgsType must derive from EventArgs");
+
 		public:
 
-			Event<EventType, ArgType>();
+			Event();
 
-			void Call(EventArgs<EventType, ArgType>);
+			void Call(EventArgsType);
 
-			Event<EventType, ArgType>& operator+=(const EventFunc<EventType, ArgType>);
-			void Subscribe(const EventFunc<EventType, ArgType>);
+			Event& operator+=(const EventFunc<EventArgsType>);
+			void Subscribe(const EventFunc<EventArgsType>);
 
 			void UnSubscribe();
 
-			EventFunc<EventType, ArgType> GetFunc();
+			EventFunc<EventArgsType> GetFunc();
 		private:
-			EventFunc<EventType, ArgType> subscribedFunc;
-			void AddSubscriber(const EventFunc<EventType, ArgType> func);
+			EventFunc<EventArgsType> subscribedFunc;
+			void AddSubscriber(const EventFunc<EventArgsType> func);
 		};
 
-		template<typename EventType, typename ArgType>
-		Event<EventType, ArgType>::Event()
+		template<class EventArgsType>
+		Event<EventArgsType>::Event()
 		{
 		}
 
-		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::Call(EventArgs<EventType, ArgType> args)
+		template<class EventArgsType>
+		inline void Event<EventArgsType>::Call(EventArgsType args)
 		{
 			subscribedFunc(args);
 		}
 
-		template<typename EventType, typename ArgType>
-		inline Event<EventType, ArgType>& Event<EventType, ArgType>::operator+=(const EventFunc<EventType, ArgType> func)
+
+		template<class EventArgsType>
+		[[deprecated("Replace with Subscribe(const EventFunc<EventArgsType>)")]] inline Event<EventArgsType>& Event<EventArgsType>::operator+=(const EventFunc<EventArgsType> func)
+		{
+			AddSubscriber(func);
+			return *this;
+		}
+
+		template<class EventArgsType>
+		inline void Event<EventArgsType>::Subscribe(const EventFunc<EventArgsType> func)
 		{
 			AddSubscriber(func);
 		}
 
-		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::Subscribe(const EventFunc<EventType, ArgType> func)
-		{
-			AddSubscriber(func);
-		}
-
-		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::UnSubscribe()
+		template<class EventArgsType>
+		inline void Event<EventArgsType>::UnSubscribe()
 		{
 			subscribedFunc = 0;
 		}
 
-		template<typename EventType, typename ArgType>
-		inline EventFunc<EventType, ArgType> Event<EventType, ArgType>::GetFunc()
+		template<class EventArgsType>
+		inline EventFunc<EventArgsType> Event<EventArgsType>::GetFunc()
 		{
 			return subscribedFunc;
 		}
 
-		template<typename EventType, typename ArgType>
-		inline void Event<EventType, ArgType>::AddSubscriber(const EventFunc<EventType, ArgType> func)
+		template<class EventArgsType>
+		inline void Event<EventArgsType>::AddSubscriber(const EventFunc<EventArgsType> func)
 		{
 			subscribedFunc = func;
 		}

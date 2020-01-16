@@ -1,14 +1,28 @@
-// #include "ServerHandler.hpp"
+#include "ServerHandler.hpp"
 
 
-// ServerHandler::ServerHandler(int16_t port){
-//     serv = Lurk::Network::TcpServer(port);
-// }
+Lurk::Node::ServerHandler::ServerHandler(int16_t port, std::unique_ptr<Lurk::Network::Socket> mySocket) : serv(std::move(mySocket), port)
+{
+	
+}
 
-// void ServerHandler::Start(){
-//     serv.SetupServer();
-    
-//     serv.AcceptClientsAsync([this](Lurk::Network::TcpClient* cl, Lurk::Network::TcpExceptions te){
-//         OnNewClient(cl, te);
-//     });
-// }
+Lurk::Network::TcpExceptions Lurk::Node::ServerHandler::Start()
+{
+	Lurk::Network::TcpExceptions excep;
+	if ((excep = serv.SetupServer()) != Lurk::Network::TcpExceptions::NoException) {
+		return excep;
+	}
+
+	serv.AcceptClients([this](auto newSocket, auto excep) {
+			if (excep != Lurk::Network::TcpExceptions::AcceptError) {
+				auto myClient = Lurk::Network::TcpClient(std::move(newSocket));
+				std::thread([this, &myClient]() {
+						OnNewClient.Call(OnNewClientEventArgs(myClient));
+				});
+				
+			}
+			//TODO implement error handling / logging
+		});
+
+	return Lurk::Network::TcpExceptions::NoException;
+}

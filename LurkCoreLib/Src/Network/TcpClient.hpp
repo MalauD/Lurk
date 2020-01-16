@@ -22,7 +22,7 @@ namespace Lurk{
                 void RecvBytesLoopAsync(std::function<void(uint8_t*,int)> callback);
                 static int inet_pton(int af, const char* src, void* dst);
             private:
-                std::unique_ptr<Socket> _socket;
+                std::shared_ptr<Socket> _socket;
         };
     }
 }

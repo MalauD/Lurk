@@ -153,24 +153,25 @@
     <ClInclude Include="Network\Exceptions\TcpExceptions.hpp" />
     <ClInclude Include="Src\Event\Event.hpp" />
     <ClInclude Include="Src\Event\EventArgs.hpp" />
-    <ClInclude Include="Src\Event\ServerEvents\ServerEventArgs.hpp" />
-    <ClInclude Include="Src\Event\ServerEvents\ServerEventTypes.hpp" />
     <ClInclude Include="Src\Network\Socket.hpp" />
     <ClInclude Include="Src\Network\TcpClient.hpp" />
     <ClInclude Include="Src\Network\TcpServer.hpp" />
     <ClInclude Include="Src\Network\TcpSocket.hpp" />
+    <ClInclude Include="Src\Node\EventsArgs\OnNewClientEventArgs.hpp" />
     <ClInclude Include="Src\Node\ServerHandler.hpp" />
     <ClInclude Include="Test\Event\Event_test.hpp" />
     <ClInclude Include="Test\main_test.hpp" />
     <ClInclude Include="Test\Network\SocketMock.hpp" />
     <ClInclude Include="Test\Network\TcpClient_test.hpp" />
     <ClInclude Include="Test\Network\TcpServer_test.hpp" />
+    <ClInclude Include="Test\Node\ServerHandler_test.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Src\Network\TcpClient.cpp" />
     <ClCompile Include="Src\Network\TcpServer.cpp" />
     <ClCompile Include="Src\Network\TcpSocket.cpp" />
+    <ClCompile Include="Src\Node\EventsArgs\OnNewClientEventArgs.cpp" />
     <ClCompile Include="Src\Node\ServerHandler.cpp" />
   </ItemGroup>
   <ItemGroup>

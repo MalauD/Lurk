@@ -78,6 +78,9 @@
     <ClInclude Include="Test\Node\ServerHandler_test.hpp">
       <Filter>Test\Node</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Node\EventsArgs\OnAcceptClientErrorEventArgs.hpp">
+      <Filter>Src\Node\EventsArgs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Network\TcpClient.cpp">
@@ -96,6 +99,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
     <ClCompile Include="Src\Node\EventsArgs\OnNewClientEventArgs.cpp">
+      <Filter>Src\Node\EventsArgs</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Node\EventsArgs\OnAcceptClientErrorEventArgs.cpp">
       <Filter>Src\Node\EventsArgs</Filter>
     </ClCompile>
   </ItemGroup>

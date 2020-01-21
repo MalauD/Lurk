@@ -13,16 +13,27 @@ Lurk::Network::TcpExceptions Lurk::Node::ServerHandler::Start()
 		return excep;
 	}
 
-	serv.AcceptClients([this](auto newSocket, auto excep) {
-			if (excep != Lurk::Network::TcpExceptions::AcceptError) {
-				auto myClient = Lurk::Network::TcpClient(std::move(newSocket));
-				std::thread([this, &myClient]() {
-						OnNewClient.Call(OnNewClientEventArgs(myClient));
-				});
-				
-			}
-			//TODO implement error handling / logging
-		});
+	isRunning = true;
+
+	while (isRunning) {
+			serv.AcceptClients([this](auto newClient, auto exceptAccept) {
+				if (exceptAccept == Lurk::Network::TcpExceptions::NoException) {
+					OnNewClient.Call(Lurk::Node::OnNewClientEventArgs(std::move(newClient)));
+				}
+				else if (exceptAccept == Lurk::Network::TcpExceptions::AcceptError) {
+					OnAcceptClientError.GetFunc() ?
+						OnAcceptClientError.Call(Lurk::Node::OnAcceptClientErrorEventArgs())
+						: Stop();
+				}
+			});
+	}
+
+
 
 	return Lurk::Network::TcpExceptions::NoException;
+}
+
+void Lurk::Node::ServerHandler::Stop() 
+{
+	isRunning = false;
 }

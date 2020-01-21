@@ -157,6 +157,7 @@
     <ClInclude Include="Src\Network\TcpClient.hpp" />
     <ClInclude Include="Src\Network\TcpServer.hpp" />
     <ClInclude Include="Src\Network\TcpSocket.hpp" />
+    <ClInclude Include="Src\Node\EventsArgs\OnAcceptClientErrorEventArgs.hpp" />
     <ClInclude Include="Src\Node\EventsArgs\OnNewClientEventArgs.hpp" />
     <ClInclude Include="Src\Node\ServerHandler.hpp" />
     <ClInclude Include="Test\Event\Event_test.hpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Src\Network\TcpClient.cpp" />
     <ClCompile Include="Src\Network\TcpServer.cpp" />
     <ClCompile Include="Src\Network\TcpSocket.cpp" />
+    <ClCompile Include="Src\Node\EventsArgs\OnAcceptClientErrorEventArgs.cpp" />
     <ClCompile Include="Src\Node\EventsArgs\OnNewClientEventArgs.cpp" />
     <ClCompile Include="Src\Node\ServerHandler.cpp" />
   </ItemGroup>

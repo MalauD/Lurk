@@ -4,4 +4,5 @@
 #include "Network/TcpClient_test.hpp"
 #include "Network/TcpServer_test.hpp"
 #include "Node/ServerHandler_test.hpp"
+#include "Node/ClientHandler_test.hpp"
 

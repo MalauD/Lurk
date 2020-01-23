@@ -21,7 +21,7 @@ Lurk::Network::TcpExceptions Lurk::Node::ServerHandler::Start()
 					OnNewClient.Call(Lurk::Node::OnNewClientEventArgs(std::move(newClient)));
 				}
 				else if (exceptAccept == Lurk::Network::TcpExceptions::AcceptError) {
-					OnAcceptClientError.GetFunc() ?
+					OnAcceptClientError.IsCallable() ?
 						OnAcceptClientError.Call(Lurk::Node::OnAcceptClientErrorEventArgs())
 						: Stop();
 				}

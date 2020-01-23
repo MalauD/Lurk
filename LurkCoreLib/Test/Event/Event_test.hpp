@@ -14,13 +14,13 @@ class TestEventArgs : Lurk::Event::EventArgs{
 TEST(EventTest,Subscribe_test) {
 	Event::Event<TestEventArgs> myEvent;
 
-	ASSERT_FALSE((bool)myEvent.GetFunc());
+	ASSERT_FALSE(myEvent.IsCallable());
 
 	myEvent.Subscribe([&](TestEventArgs args) {
 			ASSERT_TRUE(false);
 		});
 
-	ASSERT_TRUE((bool)myEvent.GetFunc());
+	ASSERT_TRUE(myEvent.IsCallable());
 
 	myEvent.UnSubscribe();
 
@@ -28,7 +28,7 @@ TEST(EventTest,Subscribe_test) {
 		ASSERT_TRUE(false);
 	};
 
-	ASSERT_TRUE((bool)myEvent.GetFunc());
+	ASSERT_TRUE(myEvent.IsCallable());
 }
 
 TEST(EventTest,UnSubscribe_test) {
@@ -40,7 +40,7 @@ TEST(EventTest,UnSubscribe_test) {
 
 	myEvent.UnSubscribe();
 
-	ASSERT_FALSE((bool)myEvent.GetFunc());
+	ASSERT_FALSE(myEvent.IsCallable());
 }
 
 TEST(EventTest,GetFunc_test) {
@@ -59,3 +59,28 @@ TEST(EventTest,CallTest) {
 	myEvent.Call(args);
 }
 
+TEST(EventTest, GetSubscribedFuncsLength_test) {
+	Event::Event<TestEventArgs> myEvent;
+
+	myEvent.Subscribe([&](TestEventArgs args) {
+			testing::AssertionFailure();
+		});
+
+	myEvent.Subscribe([&](TestEventArgs args) {
+			testing::AssertionFailure();
+		});
+
+	ASSERT_EQ(myEvent.GetSubscribedFuncsLength(), 2);
+}
+
+TEST(EventTest, IsCallable_test) {
+	Event::Event<TestEventArgs> myEvent;
+
+	ASSERT_FALSE(myEvent.IsCallable());
+
+	myEvent.Subscribe([&](TestEventArgs args) {
+		testing::AssertionFailure();
+		});
+
+	ASSERT_TRUE(myEvent.IsCallable());
+}

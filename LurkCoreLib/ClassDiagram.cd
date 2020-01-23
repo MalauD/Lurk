@@ -3,7 +3,7 @@
   <Class Name="MockSocket">
     <Position X="0.5" Y="5.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAA=</HashCode>
       <FileName>Test\Network\SocketMock.hpp</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,6 +33,48 @@
     <TypeIdentifier>
       <HashCode>AIAAgAAAAAAAAEAAAEgACIAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Src\Network\TcpSocket.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestEventArgs">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Test\Event\Event_test.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Event::EventArgs" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Event\EventArgs.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Event::Event&lt;EventArgsType&gt;">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAAAAAAAEAAAAAAAQAAAgACAAABQAAAAAIAAQA=</HashCode>
+      <FileName>Src\Event\Event.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Node::ServerHandler">
+    <Position X="0.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABAACAAAABAQQAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Src\Node\ServerHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Node::OnNewClientEventArgs">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Node\EventsArgs\OnNewClientEventArgs.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lurk::Node::OnAcceptClientErrorEventArgs">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Node\EventsArgs\OnAcceptClientErrorEventArgs.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

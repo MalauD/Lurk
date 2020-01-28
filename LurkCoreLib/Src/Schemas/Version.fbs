@@ -1,0 +1,9 @@
+namespace Lurk.Schemas;
+
+table VersionRequest{
+	Version: int16;
+}
+
+table VersionResponse{
+	Version: int16;
+}
